@@ -20,13 +20,36 @@
             position: relative; /* Untuk posisi absolut tombol mode */
         }
 
-        .mode-toogle {
-            position: absolute;
-            top: 20px; /* Jarak dari atas layar */
-            left: 50%;
-            transform: translateX(-50%); /* Memusatkan tombol secara horizontal */
-            z-index: 1000; /* Pastikan tombol tetap di atas */
-        }
+        
+.mode-toogle {
+    display: flex;
+    flex-direction: column; /* Mengatur tata letak secara vertikal */
+    align-items: center; /* Menyelaraskan semua item secara horizontal di tengah */
+    justify-content: center; /* Menyelaraskan semua item secara vertikal di tengah (opsional) */
+    position: absolute; /* Posisi absolute untuk kontrol lebih baik */
+    top: 20px; /* Jarak dari atas layar */
+    left: 50%; /* Posisi horizontal tengah */
+    transform: translateX(-50%); /* Memusatkan kontainer secara horizontal */
+    gap: 10px; /* Jarak antara ikon dan teks */
+    z-index: 1000; /* Pastikan kontainer tetap di atas elemen lain */
+}
+
+#modeToggle {
+    display: flex;
+    align-items: center; /* Menyelaraskan gambar secara vertikal di tengah (opsional) */
+}
+
+#modeIcon {
+    cursor: pointer;
+    height: 50px; /* Atur tinggi gambar sesuai kebutuhan */
+    width: 50px; /* Atur lebar gambar sesuai kebutuhan */
+}
+
+#modeText {
+    font-size: 16px; /* Ukuran font teks */
+    color: white; /* Warna teks jika latar belakang gelap */
+}
+
 
         .container-wrapper {
             display: flex;
@@ -156,10 +179,6 @@
             color: white;
         }
 
-        #modeToggle img {
-            cursor: pointer;
-            display: block; /* Menjaga gambar tombol tetap sebagai block level untuk perataan yang lebih baik */
-        }
 
         .label-new {
             display: block;
