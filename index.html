@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator Angka By PGS TEAM</title>
     <style>
    body {
@@ -263,7 +262,7 @@
     background-color: rgba(51, 50, 50, 0.6); /* Latar belakang footer (opsional) */
     color: white; /* Warna teks */
     padding: 5px; /* Padding untuk memberikan ruang di sekitar teks */
-    
+     align-items: flex-end;
 
     </style>
 </head>
@@ -305,7 +304,7 @@
             <h1>Pembagi Angka 6561</h1>
             <label class="label-new" for="inputAngka">Input Angka:</label>
             <button onclick="pasteText()">Paste Dibawah Sini !!!</button>
-            <textarea id="inputAngka" placeholder="Masukkan angka 6561 dengan pemisah *"></textarea>
+            <textarea id="inputAngka" placeholder="Masukkan angka dengan pemisah *"></textarea>
             <label class="label-new" for="inputTambahan">Total Bet:</label>
             <input type="text" id="inputTambahan" placeholder="Isi dengan Bet Anda">
             <div class="button-group">
@@ -566,11 +565,7 @@
             const inputTambahan = document.getElementById('inputTambahan').value.trim();
             const angkaArray = inputAngka.split('*');
 
-            if (angkaArray.length !== 6561) {
-                alert('Harap masukkan tepat 6561 angka yang dipisahkan oleh *');
-                return;
-            }
-
+           
             let bagian1, bagian2, bagian3, bagian4;
 
             if (pembagi === 2) {
