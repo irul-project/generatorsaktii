@@ -263,35 +263,10 @@
     color: white; /* Warna teks */
     padding: 5px; /* Padding untuk memberikan ruang di sekitar teks */
      align-items: flex-end;
-            
-             /* effect loading */
-        #loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; /* Latar belakang hitam */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1; /* Awalnya terlihat sepenuhnya */
-    transition: opacity 3s ease; /* Transisi pudar selama 5 detik */
-}
-
-#loading-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Memastikan gambar pas di layar tanpa terpotong */
-}
     </style>
 </head>
 
 <body>
-    <div id="loading-screen">
-        <img src="https://imgur.com/S8x44dy.gif" alt="Loading" id="loading-image">
-    </div>
     <div class="mode-toogle">
         <div id="modeToggle">
             <img id="modeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/sun.png" alt="Mode Toggle" onclick="toggleDarkMode()">
@@ -375,23 +350,7 @@
     </div>
 
     <script>
-        // script loading
-        window.addEventListener('load', function() {
-    var loadingScreen = document.getElementById('loading-screen');
-
-    // Gambar terlihat jelas selama 2 detik
-    setTimeout(function() {
-        loadingScreen.style.opacity = '0'; // Mulai pudar setelah 2 detik
-
-        // Setelah transisi selesai (5 detik pudar), sembunyikan elemen loading
-        setTimeout(function() {
-            loadingScreen.style.display = 'none'; // Hilangkan elemen loading
-        }, 3000); // Waktu sesuai dengan durasi transisi pudar (5 detik)
-        
-    }, 1000); // Gambar jelas selama 2 detik
-});
-
-          // Fungsi dan kode JavaScript dari Generator Angka
+                 // Fungsi dan kode JavaScript dari Generator Angka
           function processInput() {
             const mainInput = document.getElementById('mainInput');
             const removeInput1 = document.getElementById('removeInput1').value;
