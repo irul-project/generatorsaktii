@@ -283,15 +283,16 @@
             <input type="text" id="removeInput2" placeholder="Keluaran 4 Angka (TAMBAHAN - Opsional)">
             <button onclick="processInput()">Hasilan Angka</button>
             <h2>HASIL ANGKA</h2>
-            <textarea id="resultArea" readonly></textarea>
+            <input id="resultArea" type="hidden">
             <p>
                 <select id="select2">
                     <option value="*">*</option>
                     <option value="#">#</option>
                 </select>
             </p>
+            <label>Edit Dibawah Sini Jika Ingin Manual !!!</label>
             <form id="combinationForm" action="" autocomplete="off" method="get" onsubmit="return generateCombinations();" style="color: black;">
-                <input id="str" name="str" type="show" value="Hapus Angka Otomatisnya Dulu !!!">
+                <textarea id="str" name="str" type="show" placeholder="Hapus Angka Otomatisnya Dulu !!!"></textarea>
                 <input type="submit" value="Generate">
                 <input onclick="trimSpaces();" type="hidden" value="">
             </form>
@@ -333,12 +334,12 @@
 
         <div class="filter-container">
             <h1>Gabung dan Hilangkan Duplikasi Angka</h1> 
-  <label for="tabelA">TABEL  A </label> 
+  <label for="tabelA">TABEL  A (Utama) </label> 
   <button onclick="pasteTextFilterkesatu()">Paste Disini !!!</button>
   <textarea type="text" id="tabelA" placeholder="Masukkan Angka Pertama Disini !!!"></textarea> 
   <br>
   <br>
-  <label for="tabelB">TABEL  B </label>
+  <label for="tabelB">TABEL  B (Tambahan)</label>
   <button onclick="pasteTextFilterkedua()">Paste Disini !!!</button>
    <textarea id="tabelB" type="text" placeholder="Masukkan Angka Kedua Disini !!!"></textarea> 
   <div class="button-group"> <button onclick="gabungAngka()">Gabungkan dan Hilangkan Duplikasi</button>
@@ -712,23 +713,31 @@ function copyToClipboardCustom() {
 
   // Fungsi dan kode JavaScript dari Filter Angka
   function copyFilteredToClipboard() {
-            const resultText = document.getElementById('output').value;
-            
-            // Buat elemen textarea untuk menyalin teks
-            const textarea = document.createElement('textarea');
-            textarea.value = resultText;
-            document.body.appendChild(textarea);
-            
-            // Pilih dan salin teks
-            textarea.select();
-            document.execCommand('copy');
-            
-            // Hapus elemen textarea setelah menyalin
-            document.body.removeChild(textarea);
-            
-            // Tampilkan pesan salin sukses
-            alert('Hasil berhasil disalin ke clipboard!');
-        }
+    const resultText = document.getElementById('output').value;
+    
+    // Pisahkan angka berdasarkan pemisah bintang (*)
+    const numbers = resultText.split('*');
+    
+    // Menghitung jumlah angka yang dipisahkan tanda *
+    const numberCount = numbers.length;
+    
+    // Buat elemen textarea untuk menyalin teks
+    const textarea = document.createElement('textarea');
+    textarea.value = resultText;
+    document.body.appendChild(textarea);
+    
+    // Pilih dan salin teks
+    textarea.select();
+    document.execCommand('copy');
+    
+    // Hapus elemen textarea setelah menyalin
+    document.body.removeChild(textarea);
+    
+    // Tampilkan pesan salin sukses beserta jumlah angka
+    alert('Hasil berhasil disalin Boskuhh! Jumlah LC: ' + numberCount);
+}
+
+
         function pasteTextFilterkesatu() {
             navigator.clipboard.readText().then(text => {
                 document.getElementById('tabelA').value = text;
@@ -748,20 +757,24 @@ function copyToClipboardCustom() {
 
         let angkaUnik = [];
 
-        function gabungAngka() {
-            let tabelA = document.getElementById("tabelA").value;
-            let tabelB = document.getElementById("tabelB").value;
-            let gabungan = tabelA + "*" + tabelB;
-            let angkaArray = gabungan.split("*");
-            angkaUnik = Array.from(new Set(angkaArray));
-            tampilkanHasil();
-        }
+function gabungAngka() {
+    let tabelA = document.getElementById("tabelA").value.trim();  // Trim untuk menghapus spasi kosong di awal/akhir
+    let tabelB = document.getElementById("tabelB").value.trim();  // Trim untuk menghapus spasi kosong di awal/akhir
+    
+    // Cek jika kedua tabel berisi angka, lalu gabungkan dengan tanda "*"
+    let gabungan = tabelA && tabelB ? tabelA + "*" + tabelB : tabelA || tabelB;
+    
+    let angkaArray = gabungan.split("*");
+    angkaUnik = Array.from(new Set(angkaArray));
+    tampilkanHasil();
+}
 
-        function tampilkanHasil() {
-            let hasil = angkaUnik.join("*");
-            document.getElementById("output").textContent = hasil;
-            document.getElementById("total").textContent = "Total String: " + angkaUnik.length;
-        }
+function tampilkanHasil() {
+    let hasil = angkaUnik.join("*");
+    document.getElementById("output").textContent = hasil;
+    document.getElementById("total").textContent = "Total String: " + angkaUnik.length;
+}
+
 
         function isSymmetric(str) {
             return str.length === 4 && str[0] === str[1] && str[2] === str[3];
