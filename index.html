@@ -332,25 +332,33 @@
         </div>
 
         <div class="filter-container">
-            <h1>Filter Angka</h1>
-            <label for="inputText">Input Angka :</label>
-            <button onclick="pasteTextfilter()">Paste Hasil</button>
-            <textarea type="text" id="inputText" placeholder="Masukkan angka yang ingin difilter di sini, pisahkan dengan *"></textarea>
-        
-            <button onclick="filterNumbers()">Filter</button>
-            <button onclick="filterSymmetricNumbers()">Hapus Angka Simetris</button>
-            <button onclick="filterSequentialNumbers()">Hapus Angka Berjejer</button>
-            <button onclick="copyFilteredToClipboard()">Salin Hasil</button>
-        
-            <div class="result">
-                <h2>Hasil:</h2>
-                <textarea id="resultText"></textarea>
-                <p class="total" id="totalCount">Total: 0</p>
-            </div>
+            <h1>Gabung dan Hilangkan Duplikasi Angka</h1> 
+  <label for="tabelA">TABEL  A </label> 
+  <button onclick="pasteTextFilterkesatu()">Paste Disini !!!</button>
+  <textarea type="text" id="tabelA" placeholder="Masukkan Angka Pertama Disini !!!"></textarea> 
+  <br>
+  <br>
+  <label for="tabelB">TABEL  B </label>
+  <button onclick="pasteTextFilterkedua()">Paste Disini !!!</button>
+   <textarea id="tabelB" type="text" placeholder="Masukkan Angka Kedua Disini !!!"></textarea> 
+  <div class="button-group"> <button onclick="gabungAngka()">Gabungkan dan Hilangkan Duplikasi</button>
+     <button onclick="hilangkanSimetris()">Hilangkan Angka Simetris</button> 
+     <button onclick="hilangkanTigaBerurutan()">Hilangkan Tiga Angka Berdekatan</button> 
+     <button onclick="hilangkanDuaAngkaTerakhirSama()">Hilangkan Dua Angka Terakhir Sama</button> 
+     <button onclick="hilangkanDuaBerurutan()">Hilangkan Dua Angka Berurutan</button> 
+  </div> 
+  <h3>Hasil:</h3> 
+  <textarea id="output"></textarea> 
+  <div id="total"></div> 
+  <button onclick="copyFilteredToClipboard()">Salin Hasil</button>
         </div>
     </div>
 
     <script>
+// 
+
+
+
            // Fungsi dan kode JavaScript dari Generator Angka
           function processInput() {
             const mainInput = document.getElementById('mainInput');
@@ -703,39 +711,8 @@ function copyToClipboardCustom() {
 }
 
   // Fungsi dan kode JavaScript dari Filter Angka
- 
-        let currentResult = '';
-
-        function pasteTextfilter() {
-            navigator.clipboard.readText().then(text => {
-                document.getElementById('inputText').value = text;
-            }).catch(err => {
-                console.error('Gagal membaca teks dari clipboard: ', err);
-            });
-        }
-
-        function filterNumbers() {
-            const inputText = document.getElementById('inputText').value;
-            currentResult = inputText;
-            updateResult(currentResult);
-        }
-
-        function filterSymmetricNumbers() {
-            const parts = currentResult.split('*');
-            const nonSymmetricParts = parts.filter(part => !isSymmetric(part));
-            currentResult = nonSymmetricParts.join('*');
-            updateResult(currentResult);
-        }
-
-        function filterSequentialNumbers() {
-            const parts = currentResult.split('*');
-            const nonSequentialParts = parts.filter(part => !isSequential(part));
-            currentResult = nonSequentialParts.join('*');
-            updateResult(currentResult);
-        }
-
-        function copyFilteredToClipboard() {
-            const resultText = document.getElementById('resultText').value;
+  function copyFilteredToClipboard() {
+            const resultText = document.getElementById('output').value;
             
             // Buat elemen textarea untuk menyalin teks
             const textarea = document.createElement('textarea');
@@ -752,35 +729,80 @@ function copyToClipboardCustom() {
             // Tampilkan pesan salin sukses
             alert('Hasil berhasil disalin ke clipboard!');
         }
-
-        function isSymmetric(number) {
-            if (number.length % 2 !== 0) return false;
-            const half = number.length / 2;
-            const firstHalf = number.slice(0, half);
-            const secondHalf = number.slice(half);
-            return firstHalf === secondHalf;
+        function pasteTextFilterkesatu() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('tabelA').value = text;
+            }).catch(err => {
+                console.error('Gagal membaca teks dari clipboard: ', err);
+            });
         }
 
-        function isSequential(number) {
-            for (let i = 0; i < number.length - 2; i++) {
-                if (number[i] === number[i + 1] && number[i + 1] === number[i + 2]) {
-                    return true;
-                }
-            }
-            return false;
+        function pasteTextFilterkedua() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('tabelB').value = text;
+            }).catch(err => {
+                console.error('Gagal membaca teks dari clipboard: ', err);
+            });
         }
 
-        function updateResult(result) {
-            // Tampilkan hasil di elemen dengan ID 'resultText'
-            document.getElementById('resultText').value = result;
-            // Update total count
-            updateTotalCount(result);
+
+        let angkaUnik = [];
+
+        function gabungAngka() {
+            let tabelA = document.getElementById("tabelA").value;
+            let tabelB = document.getElementById("tabelB").value;
+            let gabungan = tabelA + "*" + tabelB;
+            let angkaArray = gabungan.split("*");
+            angkaUnik = Array.from(new Set(angkaArray));
+            tampilkanHasil();
         }
 
-        function updateTotalCount(result) {
-            const parts = result.split('*');
-            const totalCount = parts.length;
-            document.getElementById('totalCount').innerText = `Total: ${totalCount}`;
+        function tampilkanHasil() {
+            let hasil = angkaUnik.join("*");
+            document.getElementById("output").textContent = hasil;
+            document.getElementById("total").textContent = "Total String: " + angkaUnik.length;
+        }
+
+        function isSymmetric(str) {
+            return str.length === 4 && str[0] === str[1] && str[2] === str[3];
+        }
+
+        function hilangkanSimetris() {
+            angkaUnik = angkaUnik.filter(angka => !isSymmetric(angka));
+            tampilkanHasil();
+        }
+
+        function hasThreeConsecutiveDigits(str) {
+            return (
+                str.length === 4 &&
+                (str[0] === str[1] && str[1] === str[2] || str[1] === str[2] && str[2] === str[3])
+            );
+        }
+
+        function hilangkanTigaBerurutan() {
+            angkaUnik = angkaUnik.filter(angka => !hasThreeConsecutiveDigits(angka));
+            tampilkanHasil();
+        }
+
+        function hasTwoLastDigitsSame(str) {
+            return str.length === 4 && str[2] === str[3];
+        }
+
+        function hilangkanDuaAngkaTerakhirSama() {
+            angkaUnik = angkaUnik.filter(angka => !hasTwoLastDigitsSame(angka));
+            tampilkanHasil();
+        }
+
+        function hasTwoAdjacentDigits(str) {
+            return (
+                str.length === 4 &&
+                (str[0] === str[1] || str[1] === str[2] || str[2] === str[3])
+            );
+        }
+
+        function hilangkanDuaBerurutan() {
+            angkaUnik = angkaUnik.filter(angka => !hasTwoAdjacentDigits(angka));
+            tampilkanHasil();
         }
     </script>
      <footer>
