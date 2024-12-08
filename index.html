@@ -306,9 +306,16 @@
             <label class="label-new" for="inputAngka">Input Angka:</label>
             <button onclick="pasteText()">Paste Dibawah Sini !!!</button>
             <textarea id="inputAngka" placeholder="Masukkan angka dengan pemisah *"></textarea>
+            <button onclick="hapusAngkaSimetris()">Hapus Angka Simetris</button>
             <button class="acak-nomor" onclick="acakNomor()">Acak Nomor</button>
-            <label class="label-new" for="inputTambahan">Total Bet:</label>
-            <input type="text" id="inputTambahan" placeholder="Isi dengan Bet Anda">
+            <button onclick="copyAngkaSimetris()">Copy Angka Simetris</button>
+            <br>
+            <br>
+            <div class="label-new" id="totalBetLabel">
+                Total Angka: <span id="totalBet">0</span>
+            </div>
+            
+            <input type="hidden" id="inputTambahan" placeholder="Isi dengan Bet Anda">
             <div class="button-group">
                 <button class="pembagi-dua" onclick="generate(2)">Pembagi Dua</button>
                 <button class="pembagi-tiga" onclick="generate(3)">Pembagi Tiga</button>
@@ -358,9 +365,7 @@
     </div>
 
     <script>
-// 
-
-
+ 
 
            // Fungsi dan kode JavaScript dari Generator Angka
           function processInput() {
@@ -563,6 +568,51 @@
         }
 
  // Fungsi dan kode JavaScript dari pembagi angka dan pengacak angka
+ // Fungsi hapus angka simetris
+function hapusAngkaSimetris() {
+    const inputAngka = document.getElementById('inputAngka').value;
+
+    if (inputAngka.trim() === '') {
+        alert('Masukkan angka terlebih dahulu!');
+        return;
+    }
+
+    const angkaArray = inputAngka.split('*');
+
+    // Fungsi untuk memeriksa angka simetris
+    function isSymmetric(angka) {
+        const angkaStr = angka.toString();
+        return angkaStr === angkaStr.split('').reverse().join('');
+    }
+
+    // Menghapus angka simetris dan menyimpan angka yang dihapus
+    angkaSimetris = angkaArray.filter(angka => isSymmetric(angka));
+    const angkaTanpaSimetris = angkaArray.filter(angka => !isSymmetric(angka));
+
+    // Menampilkan hasil tanpa angka simetris kembali ke dalam textarea
+    document.getElementById('inputAngka').value = angkaTanpaSimetris.join('*');
+
+    // Menghitung total angka yang tersisa
+    const totalAngka = angkaTanpaSimetris.length;
+
+    // Menampilkan total bet di span#totalBet
+    document.getElementById('totalBet').textContent = totalAngka;
+
+    alert('Angka simetris telah dihapus!');
+
+    if (angkaTanpaSimetris.length === 0) {
+        alert('Tidak ada angka untuk dibagi!');
+    }
+}
+
+// Fungsi untuk menyalin angka simetris yang dihapus
+function copyAngkaSimetris() 
+{const inputAngka = document.getElementById('inputAngka');
+    inputAngka.select();
+    document.execCommand('copy');
+    alert('Hasil telah disalin!');
+}
+
   // pengacak angka
   function acakNomor() {
     const inputAngka = document.getElementById('inputAngka').value;
