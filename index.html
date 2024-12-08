@@ -301,11 +301,12 @@
             <button onclick="copyTextString()">Copy Hasil </button>
         </div>
 
-        <div class="pembagi-container">
+       <div class="pembagi-container">
             <h1>Pembagi Angka 6561</h1>
             <label class="label-new" for="inputAngka">Input Angka:</label>
             <button onclick="pasteText()">Paste Dibawah Sini !!!</button>
             <textarea id="inputAngka" placeholder="Masukkan angka dengan pemisah *"></textarea>
+            <button class="acak-nomor" onclick="acakNomor()">Acak Nomor</button>
             <label class="label-new" for="inputTambahan">Total Bet:</label>
             <input type="text" id="inputTambahan" placeholder="Isi dengan Bet Anda">
             <div class="button-group">
@@ -315,6 +316,7 @@
             </div>
             <div class="result" id="result"></div>
         </div>
+        
 
         <div class="primary-container-custom">
             <h1 class="custom-title">Pembalik Angka</h1>
@@ -560,7 +562,27 @@
             }
         }
 
-  // Fungsi dan kode JavaScript dari pembagi angka
+ // Fungsi dan kode JavaScript dari pembagi angka dan pengacak angka
+  // pengacak angka
+  function acakNomor() {
+    const inputAngka = document.getElementById('inputAngka').value;
+    
+    if (inputAngka.trim() === '') {
+        alert('Masukkan angka terlebih dahulu!');
+        return;
+    }
+
+    const angkaArray = inputAngka.split('*');
+    for (let i = angkaArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [angkaArray[i], angkaArray[j]] = [angkaArray[j], angkaArray[i]];
+    }
+
+    document.getElementById('inputAngka').value = angkaArray.join('*');
+    alert('Meki berhasil diacak!');
+}
+
+// pembagi angka
         function pasteText() {
             navigator.clipboard.readText().then(text => {
                 document.getElementById('inputAngka').value = text;
