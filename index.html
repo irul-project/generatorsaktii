@@ -182,80 +182,141 @@
 
 
         .label-new {
-            display: block;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 20px;
-            color: white;
-            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-        }
+    display: block;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+}
 
-        .pembagi-dua {
-            background: linear-gradient(110deg, #c43333, #4c7ce4);
-        }
+/* Styling untuk dropdown */
+.dropdown-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-        .pembagi-tiga {
-            background: linear-gradient(80deg, #c43333, #4c7ce4, #33a55b);
-        }
+#pembagiSelect {
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center; /* Menyelaraskan teks di tengah */
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #0466cf; /* Warna latar belakang */
+    color: hsl(0, 0%, 100%); /* Warna teks */
+    border: 2px solid #333; /* Menambahkan border dengan warna gelap */
+    width: 330px;
+    transition: background-color 0.3s ease;
+}
 
-        .pembagi-empat {
-            background: linear-gradient(80deg, #c43333, #4c7ce4, #33a55b, #a55dec);
-        }
+/* Efek hover pada select */
+#pembagiSelect:hover {
+    background-color: hwb(182 17% 34%); /* Warna hover */
+}
 
-        .copy-button {
-            background: inherit;
-            color: #fff;
-            border: 2px solid #fff;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
+/* Styling untuk opsi di dalam dropdown */
+#pembagiSelect option {
+    padding: 10px; /* Menambahkan padding untuk meningkatkan ukuran opsi */
+    border: 1px solid transparent; /* Menambahkan border transparan untuk efek border */
+    background-color: hsl(189, 73%, 29%); /* Latar belakang putih */
+    color: #ecebeb; /* Warna teks */
+    text-align: center; /* Menyelaraskan teks di tengah */
+}
 
-        .copy-button:hover {
-            opacity: 0.8;
-        }
+/* Menambahkan border ketika memilih opsi */
+#pembagiSelect option:checked {
+    border: 5px solid #000000; /* Menambahkan border hijau pada opsi yang dipilih */
+    background-color: hsl(0, 100%, 50%); /* Latar belakang lebih terang saat opsi dipilih */
+}
 
-        .result {
-            margin-top: 20px;
-        }
+/* Konsistensi Tombol Pembagi 2 hingga 10 */
+.pembagi-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Warna tombol default */
+    color: white;
+    border: none;
+    margin: 5px;
+    width: 200px; /* Lebar tombol seragam */
+    transition: background-color 0.3s ease;
+}
 
-        .result textarea {
-            height: 200px;
-        }
+/* Efek hover untuk tombol pembagi */
+.pembagi-button:hover {
+    background-color: #343691; /* Warna saat hover */
+}
 
-        .button-group {
-            display: flex;
-            flex-direction: column; /* Menyusun tombol ke bawah */
-            align-items: center; /* Menyusun tombol di tengah secara horizontal */
-            margin-top: 20px; /* Jarak atas untuk memisahkan dari elemen sebelumnya */
-            gap: 5px; /* Jarak antar tombol */
-        }
+/* Warna berbeda untuk setiap pembagi agar tetap seragam */
+.pembagi-dua, 
+.pembagi-tiga, 
+.pembagi-empat, 
+.pembagi-lima, 
+.pembagi-enam, 
+.pembagi-tujuh, 
+.pembagi-delapan, 
+.pembagi-sembilan, 
+.pembagi-sepuluh {
+    background: linear-gradient(110deg, #2f37ab, #6376e0); /* Warna hijau seragam untuk semua tombol */
+}
 
-        .hasil-bagian-1,
-        .hasil-bagian-2,
-        .hasil-bagian-3,
-        .hasil-bagian-4 {
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+/* Styling untuk hasil pembagian 2 hingga 10 */
+.hasil-bagian {
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
 
-        .hasil-bagian-1 {
-            background-color: rgba(216, 66, 98, 0.3);
-        }
+/* Hasil Pembagian 2 hingga 10 dengan warna seragam */
+.hasil-bagian-2, 
+.hasil-bagian-3, 
+.hasil-bagian-4, 
+.hasil-bagian-5, 
+.hasil-bagian-6, 
+.hasil-bagian-7, 
+.hasil-bagian-8, 
+.hasil-bagian-9, 
+.hasil-bagian-10 {
+    background-color: rgba(171, 47, 47, 0.3); /* Warna latar belakang hijau muda seragam */
+}
 
-        .hasil-bagian-2 {
-            background-color: rgba(42, 137, 201, 0.3);
-        }
+/* Styling untuk Copy Button */
+.copy-button {
+    background: inherit;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
 
-        .hasil-bagian-3 {
-            background-color: rgba(39, 172, 79, 0.3);
-        }
+.copy-button:hover {
+    opacity: 0.8;
+}
 
-        .hasil-bagian-4 {
-            background-color: rgba(93, 45, 189, 0.3);
-        }
+.result {
+    margin-top: 20px;
+}
+
+.result textarea {
+    height: 200px;
+}
+
+/* Layout tombol dan kontainer pembagi */
+.button-group {
+    display: flex;
+    flex-direction: column; /* Menyusun tombol ke bawah */
+    align-items: center; /* Menyusun tombol di tengah secara horizontal */
+    margin-top: 20px; /* Jarak atas untuk memisahkan dari elemen sebelumnya */
+    gap: 5px; /* Jarak antar tombol */
+}
+
+
         footer {    
     width: 100%; /* Mengisi lebar layar */
     text-align: center; /* Menyelaraskan teks di tengah */
@@ -301,7 +362,7 @@
             <button onclick="copyTextString()">Copy Hasil </button>
         </div>
 
-       <div class="pembagi-container">
+        <div class="pembagi-container">
             <h1>Pembagi Angka 6561</h1>
             <label class="label-new" for="inputAngka">Input Angka:</label>
             <button onclick="pasteText()">Paste Dibawah Sini !!!</button>
@@ -316,13 +377,25 @@
             </div>
             
             <input type="hidden" id="inputTambahan" placeholder="Isi dengan Bet Anda">
-            <div class="button-group">
-                <button class="pembagi-dua" onclick="generate(2)">Pembagi Dua</button>
-                <button class="pembagi-tiga" onclick="generate(3)">Pembagi Tiga</button>
-                <button class="pembagi-empat" onclick="generate(4)">Pembagi Empat</button>
+            <div class="dropdown-container">
+                <label for="pembagiSelect">Pilih Pembagi:</label>
+                <select id="pembagiSelect">
+                    <option value="2">Pembagi Dua</option>
+                    <option value="3">Pembagi Tiga</option>
+                    <option value="4">Pembagi Empat</option>
+                    <option value="5">Pembagi Lima</option>
+                    <option value="6">Pembagi Enam</option>
+                    <option value="7">Pembagi Tujuh</option>
+                    <option value="8">Pembagi Delapan</option>
+                    <option value="9">Pembagi Sembilan</option>
+                    <option value="10">Pembagi Sepuluh</option>
+                </select>
             </div>
+            <button id="applyPembagiButton" onclick="generateFromDropdown()">Terapkan Pembagi</button>
             <div class="result" id="result"></div>
         </div>
+        
+        
         
 
         <div class="primary-container-custom">
@@ -365,6 +438,14 @@
     </div>
 
     <script>
+
+        //fungsi dropdown ( pembagi-angka )
+        function generateFromDropdown() {
+    const pembagi = document.getElementById('pembagiSelect').value;
+    generate(parseInt(pembagi));
+}
+
+
  
 
            // Fungsi dan kode JavaScript dari Generator Angka
@@ -642,114 +723,496 @@ function copyAngkaSimetris()
         }
 
         function generate(pembagi) {
-            const inputAngka = document.getElementById('inputAngka').value;
-            const inputTambahan = document.getElementById('inputTambahan').value.trim();
-            const angkaArray = inputAngka.split('*');
+    const inputAngka = document.getElementById('inputAngka').value;
+    const inputTambahan = document.getElementById('inputTambahan').value.trim();
+    const angkaArray = inputAngka.split('*');
 
-           
-            let bagian1, bagian2, bagian3, bagian4;
+    let bagian = [];
+    
+    if (pembagi === 2) {
+        bagian[0] = angkaArray.slice(0, Math.floor(angkaArray.length / 2));
+        bagian[1] = angkaArray.slice(Math.floor(angkaArray.length / 2));
+        tampilkanHasilDua(bagian[0], bagian[1]);
+    } else if (pembagi === 3) {
+        const bagianSatuDua = Math.floor(angkaArray.length / 3);
+        bagian[0] = angkaArray.slice(0, bagianSatuDua);
+        bagian[1] = angkaArray.slice(bagianSatuDua, bagianSatuDua * 2);
+        bagian[2] = angkaArray.slice(bagianSatuDua * 2);
+        tampilkanHasilTiga(bagian[0], bagian[1], bagian[2]);
+    } else if (pembagi === 4) {
+        const bagianSatuEmpat = Math.floor(angkaArray.length / 4);
+        bagian[0] = angkaArray.slice(0, bagianSatuEmpat);
+        bagian[1] = angkaArray.slice(bagianSatuEmpat, bagianSatuEmpat * 2);
+        bagian[2] = angkaArray.slice(bagianSatuEmpat * 2, bagianSatuEmpat * 3);
+        bagian[3] = angkaArray.slice(bagianSatuEmpat * 3);
+        tampilkanHasilEmpat(bagian[0], bagian[1], bagian[2], bagian[3]);
+    } else if (pembagi === 5) {
+        const bagianSatuLima = Math.floor(angkaArray.length / 5);
+        bagian[0] = angkaArray.slice(0, bagianSatuLima);
+        bagian[1] = angkaArray.slice(bagianSatuLima, bagianSatuLima * 2);
+        bagian[2] = angkaArray.slice(bagianSatuLima * 2, bagianSatuLima * 3);
+        bagian[3] = angkaArray.slice(bagianSatuLima * 3, bagianSatuLima * 4);
+        bagian[4] = angkaArray.slice(bagianSatuLima * 4);
+        tampilkanHasilLima(bagian[0], bagian[1], bagian[2], bagian[3], bagian[4]);
+    } else if (pembagi === 6) {
+        const bagianSatuEnam = Math.floor(angkaArray.length / 6);
+        bagian[0] = angkaArray.slice(0, bagianSatuEnam);
+        bagian[1] = angkaArray.slice(bagianSatuEnam, bagianSatuEnam * 2);
+        bagian[2] = angkaArray.slice(bagianSatuEnam * 2, bagianSatuEnam * 3);
+        bagian[3] = angkaArray.slice(bagianSatuEnam * 3, bagianSatuEnam * 4);
+        bagian[4] = angkaArray.slice(bagianSatuEnam * 4, bagianSatuEnam * 5);
+        bagian[5] = angkaArray.slice(bagianSatuEnam * 5);
+        tampilkanHasilEnam(bagian[0], bagian[1], bagian[2], bagian[3], bagian[4], bagian[5]);
+    } else if (pembagi === 7) {
+        const bagianSatuTujuh = Math.floor(angkaArray.length / 7);
+        bagian[0] = angkaArray.slice(0, bagianSatuTujuh);
+        bagian[1] = angkaArray.slice(bagianSatuTujuh, bagianSatuTujuh * 2);
+        bagian[2] = angkaArray.slice(bagianSatuTujuh * 2, bagianSatuTujuh * 3);
+        bagian[3] = angkaArray.slice(bagianSatuTujuh * 3, bagianSatuTujuh * 4);
+        bagian[4] = angkaArray.slice(bagianSatuTujuh * 4, bagianSatuTujuh * 5);
+        bagian[5] = angkaArray.slice(bagianSatuTujuh * 5, bagianSatuTujuh * 6);
+        bagian[6] = angkaArray.slice(bagianSatuTujuh * 6);
+        tampilkanHasilTujuh(bagian[0], bagian[1], bagian[2], bagian[3], bagian[4], bagian[5], bagian[6]);
+    } else if (pembagi === 8) {
+        const bagianSatuDelapan = Math.floor(angkaArray.length / 8);
+        bagian[0] = angkaArray.slice(0, bagianSatuDelapan);
+        bagian[1] = angkaArray.slice(bagianSatuDelapan, bagianSatuDelapan * 2);
+        bagian[2] = angkaArray.slice(bagianSatuDelapan * 2, bagianSatuDelapan * 3);
+        bagian[3] = angkaArray.slice(bagianSatuDelapan * 3, bagianSatuDelapan * 4);
+        bagian[4] = angkaArray.slice(bagianSatuDelapan * 4, bagianSatuDelapan * 5);
+        bagian[5] = angkaArray.slice(bagianSatuDelapan * 5, bagianSatuDelapan * 6);
+        bagian[6] = angkaArray.slice(bagianSatuDelapan * 6, bagianSatuDelapan * 7);
+        bagian[7] = angkaArray.slice(bagianSatuDelapan * 7);
+        tampilkanHasilDelapan(bagian[0], bagian[1], bagian[2], bagian[3], bagian[4], bagian[5], bagian[6], bagian[7]);
+    } else if (pembagi === 9) {
+        const bagianSatuSembilan = Math.floor(angkaArray.length / 9);
+        bagian[0] = angkaArray.slice(0, bagianSatuSembilan);
+        bagian[1] = angkaArray.slice(bagianSatuSembilan, bagianSatuSembilan * 2);
+        bagian[2] = angkaArray.slice(bagianSatuSembilan * 2, bagianSatuSembilan * 3);
+        bagian[3] = angkaArray.slice(bagianSatuSembilan * 3, bagianSatuSembilan * 4);
+        bagian[4] = angkaArray.slice(bagianSatuSembilan * 4, bagianSatuSembilan * 5);
+        bagian[5] = angkaArray.slice(bagianSatuSembilan * 5, bagianSatuSembilan * 6);
+        bagian[6] = angkaArray.slice(bagianSatuSembilan * 6, bagianSatuSembilan * 7);
+        bagian[7] = angkaArray.slice(bagianSatuSembilan * 7, bagianSatuSembilan * 8);
+        bagian[8] = angkaArray.slice(bagianSatuSembilan * 8);
+        tampilkanHasilSembilan(bagian[0], bagian[1], bagian[2], bagian[3], bagian[4], bagian[5], bagian[6], bagian[7], bagian[8]);
+    } else if (pembagi === 10) {
+        const bagianSatuSepuluh = Math.floor(angkaArray.length / 10);
+        bagian[0] = angkaArray.slice(0, bagianSatuSepuluh);
+        bagian[1] = angkaArray.slice(bagianSatuSepuluh, bagianSatuSepuluh * 2);
+        bagian[2] = angkaArray.slice(bagianSatuSepuluh * 2, bagianSatuSepuluh * 3);
+        bagian[3] = angkaArray.slice(bagianSatuSepuluh * 3, bagianSatuSepuluh * 4);
+        bagian[4] = angkaArray.slice(bagianSatuSepuluh * 4, bagianSatuSepuluh * 5);
+        bagian[5] = angkaArray.slice(bagianSatuSepuluh * 5, bagianSatuSepuluh * 6);
+        bagian[6] = angkaArray.slice(bagianSatuSepuluh * 6, bagianSatuSepuluh * 7);
+        bagian[7] = angkaArray.slice(bagianSatuSepuluh * 7, bagianSatuSepuluh * 8);
+        bagian[8] = angkaArray.slice(bagianSatuSepuluh * 8, bagianSatuSepuluh * 9);
+        bagian[9] = angkaArray.slice(bagianSatuSepuluh * 9);
+        tampilkanHasilSepuluh(bagian[0], bagian[1], bagian[2], bagian[3], bagian[4], bagian[5], bagian[6], bagian[7], bagian[8], bagian[9]);
+    }
 
-            if (pembagi === 2) {
-                bagian1 = angkaArray.slice(0, Math.floor(angkaArray.length / 2));
-                bagian2 = angkaArray.slice(Math.floor(angkaArray.length / 2));
-                tampilkanHasilDua(bagian1, bagian2);
-            } else if (pembagi === 3) {
-                const bagianSatuDua = Math.floor(angkaArray.length / 3);
-                bagian1 = angkaArray.slice(0, bagianSatuDua);
-                bagian2 = angkaArray.slice(bagianSatuDua, bagianSatuDua * 2);
-                bagian3 = angkaArray.slice(bagianSatuDua * 2);
-                tampilkanHasilTiga(bagian1, bagian2, bagian3);
-            } else if (pembagi === 4) {
-                const bagianSatuEmpat = Math.floor(angkaArray.length / 4);
-                bagian1 = angkaArray.slice(0, bagianSatuEmpat);
-                bagian2 = angkaArray.slice(bagianSatuEmpat, bagianSatuEmpat * 2);
-                bagian3 = angkaArray.slice(bagianSatuEmpat * 2, bagianSatuEmpat * 3);
-                bagian4 = angkaArray.slice(bagianSatuEmpat * 3);
-                tampilkanHasilEmpat(bagian1, bagian2, bagian3, bagian4);
+    if (inputTambahan !== '') {
+        bagian.forEach((b, index) => {
+            if (b.length > 0) {
+                b[b.length - 1] += `#${inputTambahan}`;
             }
+        });
+    }
+}
 
-            if (inputTambahan !== '') {
-                if (bagian1) bagian1[bagian1.length - 1] += `#${inputTambahan}`;
-                if (bagian2) bagian2[bagian2.length - 1] += `#${inputTambahan}`;
-                if (bagian3) bagian3[bagian3.length - 1] += `#${inputTambahan}`;
-                if (bagian4) bagian4[bagian4.length - 1] += `#${inputTambahan}`;
-            }
-        }
+function tampilkanHasilDua(bagian1, bagian2) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 2</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+    `;
+}
 
-        function tampilkanHasilDua(bagian1, bagian2) {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `
-                <h2>Hasil Pembagian 2</h2>
-                <div class="hasil-bagian-1">
-                    <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
-                    <textarea id="bagian1">${bagian1.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
-                </div>
-                <div class="hasil-bagian-2">
-                    <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
-                    <textarea id="bagian2">${bagian2.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
-                </div>
-            `;
-        }
+// Fungsi tampilkan hasil untuk pembagian 3 sampai 10
+function tampilkanHasilTiga(bagian1, bagian2, bagian3) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 3</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+    `;
+}
 
-        function tampilkanHasilTiga(bagian1, bagian2, bagian3) {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `
-                <h2>Hasil Pembagian 3</h2>
-                <div class="hasil-bagian-1">
-                    <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
-                    <textarea id="bagian1">${bagian1.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
-                </div>
-                <div class="hasil-bagian-2">
-                    <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
-                    <textarea id="bagian2">${bagian2.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
-                </div>
-                <div class="hasil-bagian-3">
-                    <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
-                    <textarea id="bagian3">${bagian3.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
-                </div>
-            `;
-        }
+function tampilkanHasilEmpat(bagian1, bagian2, bagian3, bagian4) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 4</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+    `;
+}
 
-        function tampilkanHasilEmpat(bagian1, bagian2, bagian3, bagian4) {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `
-                <h2>Hasil Pembagian 4</h2>
-                <div class="hasil-bagian-1">
-                    <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
-                    <textarea id="bagian1">${bagian1.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
-                </div>
-                <div class="hasil-bagian-2">
-                    <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
-                    <textarea id="bagian2">${bagian2.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
-                </div>
-                <div class="hasil-bagian-3">
-                    <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
-                    <textarea id="bagian3">${bagian3.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
-                </div>
-                <div class="hasil-bagian-4">
-                    <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
-                    <textarea id="bagian4">${bagian4.join('*')}</textarea>
-                    <br>
-                    <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
-                </div>
-            `;
-        }
+// Fungsi tampilkan hasil untuk pembagian 5
+function tampilkanHasilLima(bagian1, bagian2, bagian3, bagian4, bagian5) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 5</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+        <div class="hasil-bagian-5">
+            <h3>Bagian 5 (Total ${bagian5.length} angka)</h3>
+            <textarea id="bagian5">${bagian5.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian5')">Copy Bagian 5</button>
+        </div>
+    `;
+}
+
+// Fungsi tampilkan hasil untuk pembagian 6
+function tampilkanHasilEnam(bagian1, bagian2, bagian3, bagian4, bagian5, bagian6) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 6</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+        <div class="hasil-bagian-5">
+            <h3>Bagian 5 (Total ${bagian5.length} angka)</h3>
+            <textarea id="bagian5">${bagian5.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian5')">Copy Bagian 5</button>
+        </div>
+        <div class="hasil-bagian-6">
+            <h3>Bagian 6 (Total ${bagian6.length} angka)</h3>
+            <textarea id="bagian6">${bagian6.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian6')">Copy Bagian 6</button>
+        </div>
+    `;
+}
+
+// Fungsi tampilkan hasil untuk pembagian 7
+function tampilkanHasilTujuh(bagian1, bagian2, bagian3, bagian4, bagian5, bagian6, bagian7) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 7</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+        <div class="hasil-bagian-5">
+            <h3>Bagian 5 (Total ${bagian5.length} angka)</h3>
+            <textarea id="bagian5">${bagian5.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian5')">Copy Bagian 5</button>
+        </div>
+        <div class="hasil-bagian-6">
+            <h3>Bagian 6 (Total ${bagian6.length} angka)</h3>
+            <textarea id="bagian6">${bagian6.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian6')">Copy Bagian 6</button>
+        </div>
+        <div class="hasil-bagian-7">
+            <h3>Bagian 7 (Total ${bagian7.length} angka)</h3>
+            <textarea id="bagian7">${bagian7.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian7')">Copy Bagian 7</button>
+        </div>
+    `;
+}
+
+// Fungsi tampilkan hasil untuk pembagian 8
+function tampilkanHasilDelapan(bagian1, bagian2, bagian3, bagian4, bagian5, bagian6, bagian7, bagian8) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 8</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+        <div class="hasil-bagian-5">
+            <h3>Bagian 5 (Total ${bagian5.length} angka)</h3>
+            <textarea id="bagian5">${bagian5.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian5')">Copy Bagian 5</button>
+        </div>
+        <div class="hasil-bagian-6">
+            <h3>Bagian 6 (Total ${bagian6.length} angka)</h3>
+            <textarea id="bagian6">${bagian6.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian6')">Copy Bagian 6</button>
+        </div>
+        <div class="hasil-bagian-7">
+            <h3>Bagian 7 (Total ${bagian7.length} angka)</h3>
+            <textarea id="bagian7">${bagian7.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian7')">Copy Bagian 7</button>
+        </div>
+        <div class="hasil-bagian-8">
+            <h3>Bagian 8 (Total ${bagian8.length} angka)</h3>
+            <textarea id="bagian8">${bagian8.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian8')">Copy Bagian 8</button>
+        </div>
+    `;
+}
+
+// Fungsi tampilkan hasil untuk pembagian 9
+function tampilkanHasilSembilan(bagian1, bagian2, bagian3, bagian4, bagian5, bagian6, bagian7, bagian8, bagian9) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 9</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+        <div class="hasil-bagian-5">
+            <h3>Bagian 5 (Total ${bagian5.length} angka)</h3>
+            <textarea id="bagian5">${bagian5.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian5')">Copy Bagian 5</button>
+        </div>
+        <div class="hasil-bagian-6">
+            <h3>Bagian 6 (Total ${bagian6.length} angka)</h3>
+            <textarea id="bagian6">${bagian6.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian6')">Copy Bagian 6</button>
+        </div>
+        <div class="hasil-bagian-7">
+            <h3>Bagian 7 (Total ${bagian7.length} angka)</h3>
+            <textarea id="bagian7">${bagian7.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian7')">Copy Bagian 7</button>
+        </div>
+        <div class="hasil-bagian-8">
+            <h3>Bagian 8 (Total ${bagian8.length} angka)</h3>
+            <textarea id="bagian8">${bagian8.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian8')">Copy Bagian 8</button>
+        </div>
+        <div class="hasil-bagian-9">
+            <h3>Bagian 9 (Total ${bagian9.length} angka)</h3>
+            <textarea id="bagian9">${bagian9.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian9')">Copy Bagian 9</button>
+        </div>
+    `;
+}
+
+// Fungsi tampilkan hasil untuk pembagian 10
+function tampilkanHasilSepuluh(bagian1, bagian2, bagian3, bagian4, bagian5, bagian6, bagian7, bagian8, bagian9, bagian10) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+        <h2>Hasil Pembagian 10</h2>
+        <div class="hasil-bagian-1">
+            <h3>Bagian 1 (Total ${bagian1.length} angka)</h3>
+            <textarea id="bagian1">${bagian1.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian1')">Copy Bagian 1</button>
+        </div>
+        <div class="hasil-bagian-2">
+            <h3>Bagian 2 (Total ${bagian2.length} angka)</h3>
+            <textarea id="bagian2">${bagian2.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian2')">Copy Bagian 2</button>
+        </div>
+        <div class="hasil-bagian-3">
+            <h3>Bagian 3 (Total ${bagian3.length} angka)</h3>
+            <textarea id="bagian3">${bagian3.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian3')">Copy Bagian 3</button>
+        </div>
+        <div class="hasil-bagian-4">
+            <h3>Bagian 4 (Total ${bagian4.length} angka)</h3>
+            <textarea id="bagian4">${bagian4.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian4')">Copy Bagian 4</button>
+        </div>
+        <div class="hasil-bagian-5">
+            <h3>Bagian 5 (Total ${bagian5.length} angka)</h3>
+            <textarea id="bagian5">${bagian5.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian5')">Copy Bagian 5</button>
+        </div>
+        <div class="hasil-bagian-6">
+            <h3>Bagian 6 (Total ${bagian6.length} angka)</h3>
+            <textarea id="bagian6">${bagian6.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian6')">Copy Bagian 6</button>
+        </div>
+        <div class="hasil-bagian-7">
+            <h3>Bagian 7 (Total ${bagian7.length} angka)</h3>
+            <textarea id="bagian7">${bagian7.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian7')">Copy Bagian 7</button>
+        </div>
+        <div class="hasil-bagian-8">
+            <h3>Bagian 8 (Total ${bagian8.length} angka)</h3>
+            <textarea id="bagian8">${bagian8.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian8')">Copy Bagian 8</button>
+        </div>
+        <div class="hasil-bagian-9">
+            <h3>Bagian 9 (Total ${bagian9.length} angka)</h3>
+            <textarea id="bagian9">${bagian9.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian9')">Copy Bagian 9</button>
+        </div>
+        <div class="hasil-bagian-10">
+            <h3>Bagian 10 (Total ${bagian10.length} angka)</h3>
+            <textarea id="bagian10">${bagian10.join('*')}</textarea>
+            <br>
+            <button class="copy-button" onclick="copyToClipboard('bagian10')">Copy Bagian 10</button>
+        </div>
+    `;
+}
 
         function copyToClipboard(elementId) {
             const textarea = document.getElementById(elementId);
