@@ -365,18 +365,20 @@
 
         <div class="pembagi-container">
             <h1>Pembagi Angka 6561</h1>
-            <label class="label-new" for="inputAngka">Input Angka:</label>
+            <label class="label-new" for="textareaInputAngka">Input Angka:</label>
             <button onclick="pasteText()">Paste Dibawah Sini !!!</button>
-            <textarea id="inputAngka" placeholder="Masukkan angka dengan pemisah *"></textarea>
-            <button onclick="hapusAngkaSimetris()">Hapus Angka Simetris</button>
-            <button class="acak-nomor" onclick="acakNomor()">Acak Nomor</button>
-            <button onclick="copyAngkaSimetris()">Copy Angka Simetris</button>
+            <textarea id="textareaInputAngka" placeholder="Masukkan angka dengan pemisah *"></textarea>
+            <button onclick="hapusAngkaSimetrisUnik()">Hapus Angka Simetris</button>
+            <button onclick="hapusSimetrisDanTigaAngkaUnik()">Simetris Extreme by Snex</button>
+            <button onclick="hapusGanjilGenapUnik()">Hapus Ganjil/Genap</button>          
+            <button class="acak-nomor" onclick="acakNomorUnik()">Acak Nomor</button>
+            <button onclick="copyAngkaSimetrisUnik()">Copy Angka Simetris</button>
             <br>
             <br>
-            <div class="label-new" id="totalBetLabel">
-                Total Angka: <span id="totalBet">0</span>
+            <div class="label-new" id="labelTotalAngka">
+                Total Angka: <span id="spanTotalAngka">0</span>
             </div>
-            
+
             <input type="hidden" id="inputTambahan" placeholder="Isi dengan Bet Anda">
             <div class="dropdown-container">
                 <label for="pembagiSelect">Pilih Pembagi:</label>
@@ -416,26 +418,25 @@
         </div>
 
         <div class="filter-container">
-            <h1>Gabung dan Hilangkan Duplikasi Angka</h1> 
-  <label for="tabelA">TABEL  A (Utama) </label> 
-  <button onclick="pasteTextFilterkesatu()">Paste Disini !!!</button>
-  <textarea type="text" id="tabelA" placeholder="Masukkan Angka Pertama Disini !!!"></textarea> 
-  <br>
-  <br>
-  <label for="tabelB">TABEL  B (Tambahan)</label>
-  <button onclick="pasteTextFilterkedua()">Paste Disini !!!</button>
-   <textarea id="tabelB" type="text" placeholder="Masukkan Angka Kedua Disini !!!"></textarea> 
-  <div class="button-group"> <button onclick="gabungAngka()">Gabungkan dan Hilangkan Duplikasi</button>
-     <button onclick="hilangkanSimetris()">Hilangkan Angka Simetris</button> 
-     <button onclick="hilangkanTigaBerurutan()">Hilangkan Tiga Angka Berdekatan</button> 
-     <button onclick="hilangkanDuaAngkaTerakhirSama()">Hilangkan Dua Angka Terakhir Sama</button> 
-     <button onclick="hilangkanDuaBerurutan()">Hilangkan Dua Angka Berurutan</button> 
-  </div> 
-  <h3>Hasil:</h3> 
-  <textarea id="output"></textarea> 
-  <div id="total"></div> 
-  <button onclick="copyFilteredToClipboard()">Salin Hasil</button>
-        </div>
+            <h1>Gabung dan Hilangkan Duplikasi Angka</h1>
+            <label for="tabelA">TABEL A (Utama)</label>
+            <button onclick="pasteTextFilterkesatu()">Paste Disini !!!</button>
+            <textarea type="text" id="tabelA" placeholder="Masukkan Angka Pertama Disini !!!"></textarea>
+            <br><br>
+            <label for="tabelB">TABEL B (Tambahan)</label>
+            <button onclick="pasteTextFilterkedua()">Paste Disini !!!</button>
+            <textarea id="tabelB" type="text" placeholder="Masukkan Angka Kedua Disini !!!"></textarea>
+            <div class="button-group">
+              <button onclick="gabungAngka()">Gabungkan dan Hilangkan Duplikasi</button>
+              <button onclick="hilangkanSimetris()">Hilangkan Angka Simetris</button>
+              <button onclick="hapusSimetrisDanTigaAngka()">Simetris Extreme by Snex</button>
+              <button onclick="hapusGanjilGenapPoltarBytrbb()">Hapus Ganjil/Genap</button>
+            </div>
+            <h3>Hasil:</h3>
+            <textarea id="output"></textarea>
+            <div id="total"></div>
+            <button onclick="copyFilteredToClipboard()">Salin Hasil</button>
+          </div>
     </div>
 
     <script>
@@ -650,9 +651,83 @@
         }
 
  // Fungsi dan kode JavaScript dari pembagi angka dan pengacak angka
- // Fungsi hapus angka simetris
-function hapusAngkaSimetris() {
-    const inputAngka = document.getElementById('inputAngka').value;
+
+// Fungsi untuk menampilkan hasil
+function tampilkanHasilUnik() {
+    document.getElementById('textareaInputAngka').value = angkaUnik.join('*');
+    document.getElementById('spanTotalAngka').textContent = angkaUnik.length;
+}
+
+// Fungsi Simetris Extreme
+function hapusSimetrisDanTigaAngkaUnik() {
+    const inputAngka = document.getElementById('textareaInputAngka').value;
+
+    if (inputAngka.trim() === '') {
+        alert('Masukkan angka terlebih dahulu!');
+        return;
+    }
+
+    const angkaArray = inputAngka.split('*');
+    const hasil = angkaArray.filter(num => {
+        if (num.length !== 4) return false;
+        const pasanganSimetris = (num[0] === num[1] && num[2] === num[3]);
+        const palindromik = (num[0] === num[3] && num[1] === num[2]);
+        const ascending = '123456789';
+        const descending = '987654321';
+        const berkesinambungan = (
+            num.slice(0, 2) === num.slice(2, 4) ||
+            (num[0] === num[2] && num[1] === num[3])
+        );
+
+        // Cek triple digit
+        for (let i = 0; i < num.length - 2; i++) {
+            if (num[i] === num[i + 1] && num[i] === num[i + 2]) {
+                return false;
+            }
+        }
+
+        const angkaBerurutan = ascending.includes(num) || descending.includes(num);
+        return !(pasanganSimetris || palindromik || angkaBerurutan || berkesinambungan);
+    });
+
+    angkaUnik = hasil;
+    tampilkanHasilUnik();
+    alert('Anda Menggunakan Simetris Extreme !!!');
+}
+
+// Fungsi Hapus Ganjil/Genap
+function hapusGanjilGenapUnik() {
+    const inputAngka = document.getElementById('textareaInputAngka').value;
+
+    if (inputAngka.trim() === '') {
+        alert('Masukkan angka terlebih dahulu!');
+        return;
+    }
+
+    const angkaArray = inputAngka.split('*');
+    angkaUnik = angkaArray.filter(num => {
+        if (num.length !== 4) return false;
+        let allOdd = true;
+        let allEven = true;
+        for (let digit of num) {
+            let d = parseInt(digit, 10);
+            if (d % 2 === 0) {
+                allOdd = false;
+            } else {
+                allEven = false;
+            }
+        }
+        return !(allOdd || allEven);
+    });
+
+    tampilkanHasilUnik();
+    alert('Anda Menggunakan Penghapus Ganjil Dan Genap !!!');
+
+}
+
+// Fungsi Hapus Angka Simetris
+function hapusAngkaSimetrisUnik() {
+    const inputAngka = document.getElementById('textareaInputAngka').value;
 
     if (inputAngka.trim() === '') {
         alert('Masukkan angka terlebih dahulu!');
@@ -661,44 +736,29 @@ function hapusAngkaSimetris() {
 
     const angkaArray = inputAngka.split('*');
 
-    // Fungsi untuk memeriksa angka simetris
     function isSymmetric(angka) {
         const angkaStr = angka.toString();
         return angkaStr === angkaStr.split('').reverse().join('');
     }
 
-    // Menghapus angka simetris dan menyimpan angka yang dihapus
-    angkaSimetris = angkaArray.filter(angka => isSymmetric(angka));
     const angkaTanpaSimetris = angkaArray.filter(angka => !isSymmetric(angka));
 
-    // Menampilkan hasil tanpa angka simetris kembali ke dalam textarea
-    document.getElementById('inputAngka').value = angkaTanpaSimetris.join('*');
+    angkaUnik = angkaTanpaSimetris;
+    tampilkanHasilUnik();
 
-    // Menghitung total angka yang tersisa
-    const totalAngka = angkaTanpaSimetris.length;
-
-    // Menampilkan total bet di span#totalBet
-    document.getElementById('totalBet').textContent = totalAngka;
-
-    alert('Angka simetris telah dihapus!');
-
-    if (angkaTanpaSimetris.length === 0) {
-        alert('Tidak ada angka untuk dibagi!');
-    }
 }
-
-// Fungsi untuk menyalin angka simetris yang dihapus
-function copyAngkaSimetris() 
-{const inputAngka = document.getElementById('inputAngka');
-    inputAngka.select();
+// Fungsi Copy Angka Simetris
+function copyAngkaSimetrisUnik() {
+    const textareaInput = document.getElementById('textareaInputAngka');
+    textareaInput.select();
     document.execCommand('copy');
     alert('Hasil telah disalin!');
 }
 
-  // pengacak angka
-  function acakNomor() {
-    const inputAngka = document.getElementById('inputAngka').value;
-    
+// Fungsi Pengacak Angka
+function acakNomorUnik() {
+    const inputAngka = document.getElementById('textareaInputAngka').value;
+
     if (inputAngka.trim() === '') {
         alert('Masukkan angka terlebih dahulu!');
         return;
@@ -710,23 +770,24 @@ function copyAngkaSimetris()
         [angkaArray[i], angkaArray[j]] = [angkaArray[j], angkaArray[i]];
     }
 
-    document.getElementById('inputAngka').value = angkaArray.join('*');
+    angkaUnik = angkaArray;
+    tampilkanHasilUnik();
     alert('Meki berhasil diacak!');
 }
 
 // pembagi angka
         function pasteText() {
             navigator.clipboard.readText().then(text => {
-                document.getElementById('inputAngka').value = text;
+                document.getElementById('textareaInputAngka').value = text;
             }).catch(err => {
                 console.error('Gagal membaca teks dari clipboard: ', err);
             });
         }
 
         function generate(pembagi) {
-    const inputAngka = document.getElementById('inputAngka').value;
+    const textareaInputAngka = document.getElementById('textareaInputAngka').value;
     const inputTambahan = document.getElementById('inputTambahan').value.trim();
-    const angkaArray = inputAngka.split('*');
+    const angkaArray = textareaInputAngka.split('*');
 
     let bagian = [];
     
@@ -1248,111 +1309,104 @@ function copyToClipboardCustom() {
 }
 
   // Fungsi dan kode JavaScript dari Filter Angka
-  function copyFilteredToClipboard() {
-    const resultText = document.getElementById('output').value;
-    
-    // Pisahkan angka berdasarkan pemisah bintang (*)
-    const numbers = resultText.split('*');
-    
-    // Menghitung jumlah angka yang dipisahkan tanda *
-    const numberCount = numbers.length;
-    
-    // Buat elemen textarea untuk menyalin teks
-    const textarea = document.createElement('textarea');
-    textarea.value = resultText;
-    document.body.appendChild(textarea);
-    
-    // Pilih dan salin teks
-    textarea.select();
-    document.execCommand('copy');
-    
-    // Hapus elemen textarea setelah menyalin
-    document.body.removeChild(textarea);
-    
-    // Tampilkan pesan salin sukses beserta jumlah angka
-    alert('Hasil berhasil disalin Boskuhh! Jumlah LC: ' + numberCount);
-}
+   function copyFilteredToClipboard() {
+      const resultText = document.getElementById('output').value;
+      const numbers = resultText.split('*');
+      const numberCount = numbers.length;
+      const textarea = document.createElement('textarea');
+      textarea.value = resultText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      alert('Hasil berhasil disalin Boskuhh! Jumlah LC: ' + numberCount);
+    }
+  
+    function pasteTextFilterkesatu() {
+      navigator.clipboard.readText().then(text => {
+        document.getElementById('tabelA').value = text;
+      }).catch(err => {
+        console.error('Gagal membaca teks dari clipboard: ', err);
+      });
+    }
+  
+    function pasteTextFilterkedua() {
+      navigator.clipboard.readText().then(text => {
+        document.getElementById('tabelB').value = text;
+      }).catch(err => {
+        console.error('Gagal membaca teks dari clipboard: ', err);
+      });
+    }
+  
+    let angkaUnik = [];
+  
+    function gabungAngka() {
+      let tabelA = document.getElementById("tabelA").value.trim();
+      let tabelB = document.getElementById("tabelB").value.trim();
+      let gabungan = tabelA && tabelB ? tabelA + "*" + tabelB : tabelA || tabelB;
+      let angkaArray = gabungan.split("*");
+      angkaUnik = Array.from(new Set(angkaArray));
+      tampilkanHasil();
+    }
+  
+    function tampilkanHasil() {
+      let hasil = angkaUnik.join("*");
+      document.getElementById("output").textContent = hasil;
+      document.getElementById("total").textContent = "Total String: " + angkaUnik.length;
+    }
+  
+    function isSymmetric(str) {
+      return str.length === 4 && str[0] === str[1] && str[2] === str[3];
+    }
+  
+    function hilangkanSimetris() {
+      angkaUnik = angkaUnik.filter(angka => !isSymmetric(angka));
+      tampilkanHasil();
+    }
+   // Fungsi Simetris Extreme
+   function hapusSimetrisDanTigaAngka() {
+    const angkaArray = angkaUnik;
+    const hasil = angkaArray.filter(num => {
+      if (num.length !== 4) return false;
+      const pasanganSimetris = (num[0] === num[1] && num[2] === num[3]);
+      const palindromik = (num[0] === num[3] && num[1] === num[2]);
+      const ascending = '123456789';
+      const descending = '987654321';
+      const berkesinambungan = (
+        num.slice(0, 2) === num.slice(2, 4) ||
+        (num[0] === num[2] && num[1] === num[3])
+      );
 
-
-        function pasteTextFilterkesatu() {
-            navigator.clipboard.readText().then(text => {
-                document.getElementById('tabelA').value = text;
-            }).catch(err => {
-                console.error('Gagal membaca teks dari clipboard: ', err);
-            });
+      // Cek triple digit
+      for (let i = 0; i < num.length - 2; i++) {
+        if (num[i] === num[i + 1] && num[i] === num[i + 2]) {
+          return false;
         }
+      }
 
-        function pasteTextFilterkedua() {
-            navigator.clipboard.readText().then(text => {
-                document.getElementById('tabelB').value = text;
-            }).catch(err => {
-                console.error('Gagal membaca teks dari clipboard: ', err);
-            });
-        }
-
-
-        let angkaUnik = [];
-
-function gabungAngka() {
-    let tabelA = document.getElementById("tabelA").value.trim();  // Trim untuk menghapus spasi kosong di awal/akhir
-    let tabelB = document.getElementById("tabelB").value.trim();  // Trim untuk menghapus spasi kosong di awal/akhir
-    
-    // Cek jika kedua tabel berisi angka, lalu gabungkan dengan tanda "*"
-    let gabungan = tabelA && tabelB ? tabelA + "*" + tabelB : tabelA || tabelB;
-    
-    let angkaArray = gabungan.split("*");
-    angkaUnik = Array.from(new Set(angkaArray));
+      const angkaBerurutan = ascending.includes(num) || descending.includes(num);
+      return !(pasanganSimetris || palindromik || angkaBerurutan || berkesinambungan);
+    });
+    angkaUnik = hasil;
     tampilkanHasil();
-}
-
-function tampilkanHasil() {
-    let hasil = angkaUnik.join("*");
-    document.getElementById("output").textContent = hasil;
-    document.getElementById("total").textContent = "Total String: " + angkaUnik.length;
-}
-
-
-        function isSymmetric(str) {
-            return str.length === 4 && str[0] === str[1] && str[2] === str[3];
+  }
+    function hapusGanjilGenapPoltarBytrbb() {
+      angkaUnik = angkaUnik.filter(num => {
+        if (num.length !== 4) return false;
+        let allOdd = true;
+        let allEven = true;
+        for (let digit of num) {
+          let d = parseInt(digit, 10);
+          if (d % 2 === 0) {
+            allOdd = false;
+          } else {
+            allEven = false;
+          }
         }
-
-        function hilangkanSimetris() {
-            angkaUnik = angkaUnik.filter(angka => !isSymmetric(angka));
-            tampilkanHasil();
-        }
-
-        function hasThreeConsecutiveDigits(str) {
-            return (
-                str.length === 4 &&
-                (str[0] === str[1] && str[1] === str[2] || str[1] === str[2] && str[2] === str[3])
-            );
-        }
-
-        function hilangkanTigaBerurutan() {
-            angkaUnik = angkaUnik.filter(angka => !hasThreeConsecutiveDigits(angka));
-            tampilkanHasil();
-        }
-
-        function hasTwoLastDigitsSame(str) {
-            return str.length === 4 && str[2] === str[3];
-        }
-
-        function hilangkanDuaAngkaTerakhirSama() {
-            angkaUnik = angkaUnik.filter(angka => !hasTwoLastDigitsSame(angka));
-            tampilkanHasil();
-        }
-
-        function hasTwoAdjacentDigits(str) {
-            return (
-                str.length === 4 &&
-                (str[0] === str[1] || str[1] === str[2] || str[2] === str[3])
-            );
-        }
-
-        function hilangkanDuaBerurutan() {
-            angkaUnik = angkaUnik.filter(angka => !hasTwoAdjacentDigits(angka));
-            tampilkanHasil();
-        }
+        return !(allOdd || allEven);
+      });
+      tampilkanHasil();
+    }
     </script>
      <footer>
         <p>&copy; Copyright By PGS TEAM</p>
