@@ -112,6 +112,25 @@
             font-size: 16px;
             box-sizing: border-box; /* Menghitung padding dalam lebar total */
         }
+        .button-red {
+    background-color: hsl(4, 100%, 38%); /* Warna merah */
+    color: white; /* Warna teks putih */
+    border: 3px solid black; /* Menambahkan border hitam sedikit tebal */
+    padding: 5px 10px; /* Menambahkan padding */
+    text-align: center; /* Menyelaraskan teks */
+    text-decoration: none; /* Menghilangkan underline */
+    display: inline-block; /* Agar tombol tetap satu baris */
+    font-size: 16px; /* Ukuran font */
+    cursor: pointer; /* Mengubah kursor menjadi pointer */
+    border-radius: 5px; /* Sudut tombol yang melengkung */
+    transition: background-color 0.3s; /* Animasi transisi */
+}
+
+.button-red:hover {
+    background-color: #880000; /* Warna merah lebih gelap saat hover */
+    border-color: #9b9b9b; /* Mengubah warna border saat hover */
+
+}
 
         button {
             cursor: pointer;
@@ -369,8 +388,8 @@
             <button onclick="pasteText()">Paste Dibawah Sini !!!</button>
             <textarea id="textareaInputAngka" placeholder="Masukkan angka dengan pemisah *"></textarea>
             <button onclick="hapusAngkaSimetrisUnik()">Hapus Angka Simetris</button>
-            <button onclick="hapusSimetrisDanTigaAngkaUnik()">Simetris Extreme by Snex</button>
-            <button onclick="hapusGanjilGenapUnik()">Hapus Ganjil/Genap</button>          
+            <button class="button-red" onclick="hapusSimetrisDanTigaAngkaUnik()">Simetris Extreme by Snex</button>
+            <button class="button-red" onclick="hapusGanjilGenapUnik()">Hapus Ganjil/Genap</button>                   
             <button class="acak-nomor" onclick="acakNomorUnik()">Acak Nomor</button>
             <button onclick="copyAngkaSimetrisUnik()">Copy Angka Simetris</button>
             <br>
@@ -667,6 +686,12 @@ function hapusSimetrisDanTigaAngkaUnik() {
         return;
     }
 
+    // Menampilkan confirm dialog untuk meminta konfirmasi dari pengguna
+    if (!confirm('yakin ingin menggunakan Simetris Extreme?')) {
+        alert('Operasi dibatalkan!');
+        return; // Jika pengguna menekan "Cancel", proses dihentikan
+    }
+
     const angkaArray = inputAngka.split('*');
     const hasil = angkaArray.filter(num => {
         if (num.length !== 4) return false;
@@ -692,7 +717,6 @@ function hapusSimetrisDanTigaAngkaUnik() {
 
     angkaUnik = hasil;
     tampilkanHasilUnik();
-    alert('Anda Menggunakan Simetris Extreme !!!');
 }
 
 // Fungsi Hapus Ganjil/Genap
@@ -702,6 +726,12 @@ function hapusGanjilGenapUnik() {
     if (inputAngka.trim() === '') {
         alert('Masukkan angka terlebih dahulu!');
         return;
+    }
+
+    // Menampilkan confirm dialog untuk meminta konfirmasi dari pengguna
+    if (!confirm('yakin ingin menghapus angka ganjil/genap?')) {
+        alert('Operasi dibatalkan!');
+        return; // Jika pengguna menekan "Cancel", proses dihentikan
     }
 
     const angkaArray = inputAngka.split('*');
@@ -721,9 +751,8 @@ function hapusGanjilGenapUnik() {
     });
 
     tampilkanHasilUnik();
-    alert('Anda Menggunakan Penghapus Ganjil Dan Genap !!!');
-
 }
+
 
 // Fungsi Hapus Angka Simetris
 function hapusAngkaSimetrisUnik() {
